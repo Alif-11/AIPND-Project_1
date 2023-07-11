@@ -46,6 +46,7 @@ def get_pet_labels(image_dir):
     # then realized that the end of each list contained an irrelevant number. got rid of it using [:-1] at the end of the list element expression. i handle hidden files by only adding files to my list if they dont start with the character .
     file_names = listdir(image_dir)
     pet_labels = [file[:-4].split("_")[:-1] for file in file_names if file[0]!="."]
+    visible_file_names = [file for file in file_names if file[0]!="."]
     for index in range(len(pet_labels)):
         # go through every element of pet_labels. each element is a list, so take the first element and modify it
         pet_labels[index][0] = pet_labels[index][0].lower()
@@ -53,7 +54,7 @@ def get_pet_labels(image_dir):
         #join together the elements of fragmented pet name lists into one pet name string
         pet_labels[index] = (" ".join(pet_labels[index])).strip()
     results_dic = dict()
-    for k,v in zip(file_names, pet_labels):
+    for k,v in zip(visible_file_names, pet_labels):
         results_dic[k] = [v]
     # Replace None with the results_dic dictionary that you created with this
     # function
