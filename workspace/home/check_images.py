@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/check_images.py
-#
-# TODO 0: Add your information below for Programmer & Date Created.                                                                             
+#                                                                          
 # PROGRAMMER: Alif Abdullah
 # DATE CREATED: 7/8/2023                                
 # REVISED DATE: 
@@ -39,27 +38,23 @@ from print_results import print_results
 
 # Main program function defined below
 def main():
-    # TODO 0: Measures total program runtime by collecting start time
+    # Calculate program execution time by taking start time
     start_time = time()
     
-    # TODO 1: Define get_input_args function within the file get_input_args.py
-    # This function retrieves 3 Command Line Arugments from user as input from
-    # the user running the program from a terminal window. This function returns
-    # the collection of these command line arguments from the function call as
-    # the variable in_arg
+    # The function get_input_args() is defined in the file get_input_args.py
+    # The function takes 3 command line arguments from the user:
+    # - the path to the directory of pet images, as --dir (ex pet_images/)
+    # - the name of model architecture to be used, as --arch (ex vgg)
+    # - the path to the text file with recognized dog names as --dogfile (ex dognames.txt)
     in_arg = get_input_args()
 
     # Function that checks command line arguments using in_arg  
     check_command_line_arguments(in_arg)
 
-    
-    # TODO 2: Define get_pet_labels function within the file get_pet_labels.py
-    # Once the get_pet_labels function has been defined replace 'None' 
-    # in the function call with in_arg.dir  Once you have done the replacements
-    # your function call should look like this: 
-    #             get_pet_labels(in_arg.dir)
-    # This function creates the results dictionary that contains the results, 
-    # this dictionary is returned from the function call as the variable results
+    # The function get_pet_labels(...) is defined in the file get_pet_labels.py
+    # The function takes the pet images directory. Using the filenames in the directory,
+    # it creates and returns a dictionary whose keys are the filenames in the directory that was passed in,
+    # and whose values are a list with one element: the animal breed that is contained within each of the filenames
     results = get_pet_labels(in_arg.dir)
 
     # Function that checks Pet Images in the results Dictionary using results    
