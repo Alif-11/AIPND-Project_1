@@ -30,13 +30,7 @@
 #           at indices 3 & 4 to 1 when the label is of-a-dog and to 0 when the 
 #           label isn't a dog.
 #
-##
-# TODO 4: Define adjust_results4_isadog function below, specifically replace the None
-#       below by the function definition of the adjust_results4_isadog function. 
-#       Notice that this function doesn't return anything because the 
-#       results_dic dictionary that is passed into the function is a mutable 
-#       data type so no return is needed.
-# 
+
 def adjust_results4_isadog(results_dic, dogfile):
     """
     Adjusts the results dictionary to determine if classifier correctly 
@@ -73,9 +67,7 @@ def adjust_results4_isadog(results_dic, dogfile):
             if line[:-1] in dognames:
                 print("Warning! Duplicate dog name found!")
             dognames.add(line[:-1])
-    for file in results_dic:
-        results_dic[file].append( (results_dic[file][0] in dognames) + 0)
-        results_dic[file].append( (results_dic[file][1] in dognames) + 0)
-        #print("pet image label:", results_dic[file][0])
-        #print("is label in dognames?", results_dic[file][0] in dognames)
+    for value in results_dic.values():
+        value.append(int(value[0] in dognames))
+        value.append(int(value[1] in dognames))
         

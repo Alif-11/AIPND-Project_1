@@ -41,7 +41,6 @@ def main():
     # Calculate program execution time by taking start time
     start_time = time()
     
-    # The function get_input_args() is defined in the file get_input_args.py
     # The function takes 3 command line arguments from the user:
     # - the path to the directory of pet images, as --dir (ex pet_images/)
     # - the name of model architecture to be used, as --arch (ex vgg)
@@ -51,7 +50,6 @@ def main():
     # Function that checks command line arguments using in_arg  
     check_command_line_arguments(in_arg)
 
-    # The function get_pet_labels(...) is defined in the file get_pet_labels.py
     # The function takes the pet images directory. Using the filenames in the directory,
     # it creates and returns a dictionary whose keys are the filenames in the directory that was passed in,
     # and whose values are a list with one element: 
@@ -61,7 +59,6 @@ def main():
     # Function that checks Pet Images in the results Dictionary using results    
     check_creating_pet_image_labels(results)
 
-    # The function classify_images(...) is defined in the file classify_images.py
     # The function modifies the dictionary returned in the last function, adding to the values list
     # - (index 1) the label the classifier categorized the image as
     # - (index 2) the integer 1 if there is a match between the labels in indices 0 and 1, and 0 otherwise
@@ -70,27 +67,29 @@ def main():
     # Function that checks Results Dictionary using results    
     check_classifying_images(results)    
 
-    
-    # TODO 4: Define adjust_results4_isadog function within the file adjust_results4_isadog.py
-    # Once the adjust_results4_isadog function has been defined replace 'None' 
-    # in the function call with in_arg.dogfile  Once you have done the 
-    # replacements your function call should look like this: 
-    #          adjust_results4_isadog(results, in_arg.dogfile)
-    # Adjusts the results dictionary to determine if classifier correctly 
-    # classified images as 'a dog' or 'not a dog'. This demonstrates if 
-    # model can correctly classify dog images as dogs (regardless of breed)
+    # The function adjust_results4_isadog is defined in the file adjust_results4_isadog.py
+    # The function modifies the dictionary returned in the last function, adding to the values list
+    # - (index 3) 1 if the pet image is of an actual dog, 0 otherwise
+    # - (index 4) 1 if the classifier categorizes the image as a dog, 0 otherwise
     adjust_results4_isadog(results, in_arg.dogfile)
 
     # Function that checks Results Dictionary for is-a-dog adjustment using results
     check_classifying_labels_as_dogs(results)
 
-
-    # TODO 5: Define calculates_results_stats function within the file calculates_results_stats.py
-    # This function creates the results statistics dictionary that contains a
-    # summary of the results statistics (this includes counts & percentages). This
-    # dictionary is returned from the function call as the variable results_stats    
-    # Calculates results of run and puts statistics in the Results Statistics
-    # Dictionary - called results_stats
+    # The function returns a dictionary with summary statistics about the performance of the current executed model.
+    # The keys are the statistic names, and the values are the actual statistics.
+    # They will be listed in this format - (key : description of significance of value)
+    # ('n_images' : number of images)
+    # ('n_dogs_img': number of images that are dogs)
+    # ('n_notdogs_img' : number of images that are not dogs)
+    # ('n_match': number of matches between the actual breed and classifier label)
+    # ('n_correct_dogs' : number of images of dogs the classifier thought was a dog)
+    # ('n_correct_notdogs' : number of images of not dogs the classifer thought was not a dog)
+    # ('n_correct_breed' : number of dogs that the classifier correctly labelled with the right breed)
+    # ('pct_match' : 'n_match' over 'n_images')
+    # ('pct_correct_dogs' : 'n_correct_dogs' over 'n_dogs_img')
+    # ('pct_correct_notdogs' : 'n_correct_notdogs' over 'n_notdogs_img')
+    # ('pct_correct_breed' : 'n_correct_breed' over 'n_dogs_img')
     results_stats = calculates_results_stats(results)
 
     # Function that checks Results Statistics Dictionary using results_stats
