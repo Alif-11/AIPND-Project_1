@@ -5,18 +5,18 @@ Command Line Arguments:
 
 Pet Image Label Dictionary has 4 key-value pairs.
 Below are 4 of them:
- 1 key:                     Bed_01.jpg  label:                        bed
- 2 key:                    Lion_01.jpg  label:                       lion
- 3 key:                     Dog_01.jpg  label:                        dog
- 4 key:                     Dog_02.jpg  label:                        dog
+ 1 key:                     Dog_01.jpg  label:                        dog
+ 2 key:                     Dog_02.jpg  label:                        dog
+ 3 key:                    Lion_01.jpg  label:                       lion
+ 4 key:                     Bed_01.jpg  label:                        bed
 
      MATCH:
 
-                    Bed_01.jpg: 
-Real:                        bed   Classifier:          studio couch, day bed
-
                    Lion_01.jpg: 
 Real:                       lion   Classifier: lion, king of beasts, panthera leo
+
+                    Bed_01.jpg: 
+Real:                        bed   Classifier:          studio couch, day bed
 
  NOT A MATCH:
 
@@ -30,12 +30,12 @@ Real:                        dog   Classifier: koala, koala bear, kangaroo bear,
 
      MATCH:
 
-                    Bed_01.jpg: 
-Real:                        bed   Classifier:          studio couch, day bed  
-PetLabelDog: 0  ClassLabelDog: 0
-
                    Lion_01.jpg: 
 Real:                       lion   Classifier: lion, king of beasts, panthera leo  
+PetLabelDog: 0  ClassLabelDog: 0
+
+                    Bed_01.jpg: 
+Real:                        bed   Classifier:          studio couch, day bed  
 PetLabelDog: 0  ClassLabelDog: 0
 
  NOT A MATCH:
@@ -72,4 +72,4 @@ Printing misclassified breeds
 pet image: dog
 classifier labels: golden retriever
 
-** Total Elapsed Runtime: 0:0:1
+** Total Elapsed Runtime: 0:0:0

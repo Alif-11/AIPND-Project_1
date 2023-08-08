@@ -23,6 +23,7 @@
 # Imports classifier function for using CNN to classify images 
 from classifier import classifier
 from os import listdir
+import os.path
 
 # TODO 3: Define classify_images function below, specifically replace the None
 #       below by the function definition of the classify_images function. 
@@ -66,17 +67,10 @@ def classify_images(images_dir, results_dic, model):
      Returns:
            None - results_dic is mutable data type so no return needed.         
     """
-    pet_files = listdir(images_dir)
-    file_count = 1
-    for file in pet_files:
+    for file in results_dic:
         # first argument is the path to each image file, second argument is the model passed in with the function call
-        classifier_labels = classifier(images_dir+file, model)
-        labels_list = classifier_labels.split(", ")
-        for index in range(len(labels_list)):
-            labels_list[index] = labels_list[index].lower()
-        results_dic[file].append(", ".join(labels_list).strip())
+        classifier_labels = classifier(os.path.join(images_dir, file), model)
+        # after cleaning up the classified label, append it to the dictionary
+        results_dic[file].append(classifier_labels.lower().strip())
         # since True is 1 and False is 0 in python, we can add them together and append the result 
-        results_dic[file].append(0  +  (results_dic[file][0] in results_dic[file][1]) )
-        #print("We have just completed:",file_count)
-        file_count+=1
-    #print(results_dic)
+        results_dic[file].append(int(results_dic[file][0] in results_dic[file][1]) )

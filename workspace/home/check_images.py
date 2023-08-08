@@ -54,21 +54,17 @@ def main():
     # The function get_pet_labels(...) is defined in the file get_pet_labels.py
     # The function takes the pet images directory. Using the filenames in the directory,
     # it creates and returns a dictionary whose keys are the filenames in the directory that was passed in,
-    # and whose values are a list with one element: the animal breed that is contained within each of the filenames
+    # and whose values are a list with one element: 
+    # - (index 0) the animal breed that is contained within each of the filenames
     results = get_pet_labels(in_arg.dir)
 
     # Function that checks Pet Images in the results Dictionary using results    
     check_creating_pet_image_labels(results)
 
-
-    # TODO 3: Define classify_images function within the file classiy_images.py
-    # Once the classify_images function has been defined replace first 'None' 
-    # in the function call with in_arg.dir and replace the last 'None' in the
-    # function call with in_arg.arch  Once you have done the replacements your
-    # function call should look like this: 
-    #             classify_images(in_arg.dir, results, in_arg.arch)
-    # Creates Classifier Labels with classifier function, Compares Labels, 
-    # and adds these results to the results dictionary - results
+    # The function classify_images(...) is defined in the file classify_images.py
+    # The function modifies the dictionary returned in the last function, adding to the values list
+    # - (index 1) the label the classifier categorized the image as
+    # - (index 2) the integer 1 if there is a match between the labels in indices 0 and 1, and 0 otherwise
     classify_images(in_arg.dir, results, in_arg.arch)
 
     # Function that checks Results Dictionary using results    
