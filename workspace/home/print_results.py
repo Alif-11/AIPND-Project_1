@@ -25,12 +25,7 @@
 #             False in the function call within main (defaults to False)
 #         This function does not output anything other than printing a summary
 #         of the final results.
-##
-# TODO 6: Define print_results function below, specifically replace the None
-#       below by the function definition of the print_results function. 
-#       Notice that this function doesn't to return anything because it  
-#       prints a summary of the results using results_dic and results_stats_dic
-# 
+
 def print_results(results_dic, results_stats_dic, model, 
                   print_incorrect_dogs = False, print_incorrect_breed = False):
     """
@@ -66,23 +61,26 @@ def print_results(results_dic, results_stats_dic, model,
     print("n_images:", results_stats_dic['n_images'])
     print("n_dogs_img:", results_stats_dic['n_dogs_img'])
     print("n_notdogs_img:", results_stats_dic['n_notdogs_img'])
+
     for percentage in results_stats_dic:
         if percentage[0] == "p":
             print(percentage+":",results_stats_dic[percentage])
+
     if print_incorrect_dogs and results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'] != results_stats_dic['n_images']:
         print("Printing misclassified dogs.")
-        for file in results_dic:
-            if sum(results_dic[file][3:]) == 1:
-                print("pet image:",results_dic[file][0])
-                print("classifier labels:",results_dic[file][1])
+        for value in results_dic.values():
+            if sum(value[3:]) == 1:
+                print("pet image:",value[0])
+                print("classifier labels:",value[1])
     elif print_incorrect_dogs and results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs'] == results_stats_dic['n_images']:
         print("No misclassified dogs to be printed")
+
     if print_incorrect_breed and results_stats_dic['n_correct_dogs'] != results_stats_dic['n_correct_breed']:
         print("Printing misclassified breeds")
-        for file in results_dic:
-            if sum(results_dic[file][3:]) == 2 and results_dic[file][2] == 0:
-                print("pet image:",results_dic[file][0])
-                print("classifier labels:",results_dic[file][1])
+        for value in results_dic.values():
+            if sum(value[3:]) == 2 and value[2] == 0:
+                print("pet image:",value[0])
+                print("classifier labels:",value[1])
     elif print_incorrect_breed and results_stats_dic['n_correct_dogs'] == results_stats_dic['n_correct_breed']:
         print("No misclassified breeds to be printed.")
        

@@ -95,20 +95,17 @@ def main():
     # Function that checks Results Statistics Dictionary using results_stats
     check_calculating_results(results, results_stats)
 
-
-    # TODO 6: Define print_results function within the file print_results.py
-    # Once the print_results function has been defined replace 'None' 
-    # in the function call with in_arg.arch  Once you have done the 
-    # replacements your function call should look like this: 
-    #      print_results(results, results_stats, in_arg.arch, True, True)
-    # Prints summary results, incorrect classifications of dogs (if requested)
-    # and incorrectly classified breeds (if requested)
+    # Prints a list of summary statistics that offer insight into the accuracy and efficiency of the models
+    # Displays the model name, number of images, number of dogs and not dogs, every percentage statistic from the last dictionary
+    # as well as two error statistics:
+    # - Misclassified dogs: the images with a dog that the classifier thought had no dog, and vice versa
+    # - Misclassified breeds: the images where the classifier thought an image of a dog was a dog, but gave an incorrect label for the breed
     print_results(results, results_stats, in_arg.arch, True, True)
     
-    # TODO 0: Measure total program runtime by collecting end time
+    # Calculate program execution time by taking end time
     end_time = time()
     
-    # TODO 0: Computes overall runtime in seconds & prints it in hh:mm:ss format
+    # Print overall runtime in seconds in the hh:mm:ss format
     tot_time = end_time - start_time#calculate difference between end time and start time
     print("\n** Total Elapsed Runtime:",
           str(int((tot_time/3600)))+":"+str(int((tot_time%3600)/60))+":"

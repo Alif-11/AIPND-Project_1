@@ -73,6 +73,7 @@ def calculates_results_stats(results_dic):
     results_stats_dic['n_correct_dogs'] = 0
     results_stats_dic['n_correct_notdogs'] = 0
     results_stats_dic['n_correct_breed'] = 0
+
     for value in results_dic.values():
         results_stats_dic['n_dogs_img'] += value[3]
         results_stats_dic['n_match'] += value[2]
@@ -84,6 +85,7 @@ def calculates_results_stats(results_dic):
         if(value[2] and value[3]):
             results_stats_dic['n_correct_breed'] += 1
     results_stats_dic['n_notdogs_img'] = len(results_dic) - results_stats_dic['n_dogs_img']
+    
     # the following 4 conditionals check to see if the denominator of each division is 0. if not, calculate percentage normally
     if results_stats_dic['n_images'] == 0:
         results_stats_dic['pct_match'] = 0
